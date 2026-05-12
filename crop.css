@@ -1,0 +1,551 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Fake Header 
+.fake-header {
+    background: #333; /* Background color for the fake header 
+    height: 120px; /* Increased height of the fake header 
+    position: fixed; /* Fixed positioning 
+    width: 100%; /* Full width 
+    top: 0; /* Stick to the top 
+    z-index: 999; /* Behind the actual header */
+
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    border-bottom: 3px solid #333;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#hero {
+    position: relative;
+    background: url('agriculture2.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0; /* Adjusted padding to account for fixed header */
+    text-align: center;
+    background-size: cover;
+}
+
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+#hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+.content-section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.result-text {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.management-tips {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.dashboard-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.premium-contact {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    color: white;
+    padding: 20px 15px; /* Reduced padding */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
+    max-width: 600px; /* Added a maximum width to limit the section size */
+    margin: 0 auto; /* Centered the section */
+}
+
+.premium-contact h2 {
+    font-size: 1.5em; /* Reduced font size */
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.premium-contact .form-group {
+    margin-bottom: 10px; /* Reduced spacing between form elements */
+}
+
+.premium-contact .form-input {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* Slightly lighter box shadow */
+    font-size: 0.9em; /* Slightly reduced font size */
+}
+
+.premium-contact .btn {
+    background: #333;
+    color: white;
+    padding: 10px 20px; /* Reduced padding */
+    border-radius: 5px;
+    font-size: 1em; /* Reduced font size */
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px; /* Max width for the modal */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* Make sure it stacks above the background */
+    z-index: 1001;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.profile-display {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+
+
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile-display {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    display: none; /* Initially hidden, shown only after login */
+}
+
+.profile-container {
+    position: absolute;
+    right: 20px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.profile-pic-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+#weather {
+    background: #f0f0f0;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#weather h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+#weatherInfo {
+    font-size: 1.2em;
+    color: #333;
+}
+/* Default weather background */
+.default-weather {
+    background-image: url('images/default-weather.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Sunny weather background */
+.sunny {
+    background-image: url('sunny.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Rainy weather background */
+.rainy {
+    background-image: url('ranny.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Cloudy weather background */
+.cloudy {
+    background-image: url('cloudy.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Snowy weather background */
+.snow {
+    background-image: url('snow.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Weather container styling 
+.weather-container {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}*/
+
+
+
+
+.weather-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+#weather-details {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.sunny {
+    background-image: url('sunny.jpg');
+}
+
+.rainy {
+    background-image: url('ranny.jpg');
+}
+
+.cloudy {
+    background-image: url('cloudy.webp');
+}
+
+.snow {
+    background-image: url('snow.jpg');
+}
+
+
+
+.weather-container {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+.sunny {
+    background: url('sunny.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.rainy {
+    background: url('ranny.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.cloudy {
+    background: url('cloudy.webp') no-repeat center center;
+    background-size: cover;
+}
+
+.snow {
+    background: url('snow.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.stormy {
+    background: url('storm.webp') no-repeat center center;
+    background-size: cover;
+}
+
+
+.weather-container {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.weather-alerts {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.alert {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #ffe6e6; /* Light red background for visibility */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+
+/* Crop Disease Management Section */
+#crop-disease-management {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#crop-disease-management h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.disease-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.disease {
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+    background: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.disease-image {
+    width: 100%;
+    height: 200px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Ensure images cover the container while preserving aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.disease-description {
+    padding: 10px;
+}
+
+.disease-description h3 {
+    color: #4CAF50;
+}
+
+.pdf-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pdf-link .btn {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.pdf-link .btn:hover {
+    background: #555;
+}
+
+#disease-prediction {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#disease-prediction h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+#predictionResult {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.language-select {
+    padding: 5px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.language-select option {
+    font-size: 14px;
+}

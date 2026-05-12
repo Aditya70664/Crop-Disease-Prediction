@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Prediction & Management System</title>
+    <link rel="stylesheet" href="crop.css">
+    <title>Map with Mapillary Viewer</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+        }
+
+        #mapillaryViewer {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+ <!-- Fake Top Header -->
+ <div class="fake-header"></div>
+
+
+
+    <header>
+        <div class="container">
+            <h1>CropLife: Save Green Go Green with AI</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#prediction">Disease Prediction</a></li>
+                    <li><a href="#management">Crop Management</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#login" onclick="openLoginModal()">Login</a></li> <!-- Login Option with onclick -->
+
+                    <!-- Language Option -->
+                     <li style="float: left;">
+                    <select id="languageSelect" class="language-select">
+                    <option value="en">English</option>
+                     <option value="hi">Hindi</option>
+                    <option value="es">Spanish</option>
+                    <!-- Add more languages as needed -->
+                    </select>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+            <div id="profileContainer" class="profile-container">
+                <img id="profilePicHeader" src="" alt="Profile Picture" class="profile-pic-header" style="display:none;">
+            </div>
+
+
+
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h2>Ensure Healthy Crops & Better Yields</h2>
+            <p>Use our advanced system to predict crop diseases and manage your fields effectively.</p>
+            <a href="#prediction" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="prediction" class="content-section">
+           <!--- <h2>Disease Prediction</h2>
+            <p>Upload an image of your crop's leaves to predict possible diseases and receive management suggestions.</p>
+            <input type="file" id="imageUpload" class="upload-btn">
+            <button onclick="predictDisease()" class="btn">Predict Disease</button>
+            <p id="result" class="result-text"></p>
+        </section>-->
+
+
+
+        <div id="disease-prediction">
+            <h2>Disease Prediction</h2>
+            <label for="crop-image">Upload Crop Image:</label>
+            <input type="file" id="imageUpload" accept="image/*"><br><br>
+            <button id="predictBtn" class="btn">Predict Disease</button>
+            <div id="predictionResult" style="display: none;">
+                <h3>Predicted Disease: <span id="diseaseName"></span></h3>
+                <p id="diseaseTips"></p>
+            </div>
+        </div>
+        
+
+       
+        <section id="management" class="content-section">
+            <h2>Crop Management Tips</h2>
+            <p>Explore our tips and resources to keep your crops healthy throughout the season.</p>
+            <ul class="management-tips">
+                <li>Rotate crops to prevent soil depletion and disease buildup.</li>
+                <li>Regularly monitor soil health and moisture levels.</li>
+                <li>Use organic fertilizers and pest control methods.</li>
+                <li>Implement proper irrigation practices.</li>
+            </ul>
+        </section>
+
+        <section id="dashboard" class="content-section">
+            <h2>Your Crop Health Dashboard</h2>
+            <div id="weather-info" class="weather-container">
+                <img id="weather-icon" src="" alt="Weather Icon" class="weather-icon">
+                <span id="weather-city">City Name</span>
+                <span id="weather-temp">25°C</span>
+                <p id="weather-condition">Condition: Clear Sky</p>
+                <p id="weather-description">Description</p>
+                <p id="weather-humidity">Humidity: --%</p>
+                <p id="weather-wind">Wind Speed: -- m/s</p>
+            </div>
+        </section>
+
+
+<!-- Crop Disease Management Section -->
+  <!-- Crop Disease Management Section -->
+  <section id="crop-disease-management" class="container">
+    <h2>Crop Disease Management</h2>
+    <div class="disease-info">
+        <div class="disease">
+            <img src="Blast (Rice).png" alt="Blast Disease" class="disease-image">
+            <div class="disease-description">
+                <h3>Blast (Rice)</h3>
+                <p>A fungal disease caused by <i>Magnaporthe oryzae</i> that affects rice plants, causing lesions on leaves, stems, and panicles, leading to reduced yields.</p>
+                <a href="blast(rice).pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Early Blight (Tomato).jpg" alt="Early Blight" class="disease-image">
+            <div class="disease-description">
+                <h3>Early Blight (Tomato)</h3>
+                <p>Caused by <i>Alternaria solani</i>, this disease results in dark, sunken lesions on leaves, stems, and fruits of tomato plants, leading to premature leaf drop and reduced fruit quality.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Powdery Mildew (Various Crops).webp" alt="Powdery Mildew" class="disease-image">
+            <div class="disease-description">
+                <h3>Powdery Mildew (Various Crops)</h3>
+                <p>A fungal disease caused by different fungi, including <i>Erysiphe</i> species, characterized by a white, powdery coating on leaves and stems, leading to reduced photosynthesis and plant growth.</p>
+                <a href="Powdery Mildew.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Bacterial Blight (Rice).jpeg" alt="Bacterial Blight" class="disease-image">
+            <div class="disease-description">
+                <h3>Bacterial Blight (Rice)</h3>
+                <p>Caused by <i>Xanthomonas oryzae</i>, this bacterial disease leads to water-soaked lesions on rice leaves and can cause significant yield losses if not controlled.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Leaf Spot (Cotton).webp" alt="Leaf Spot" class="disease-image">
+            <div class="disease-description">
+                <h3>Leaf Spot (Cotton)</h3>
+                <p>Caused by various fungi like <i>Cercospora</i> species, leaf spot causes small, dark spots on cotton leaves, which can lead to defoliation and decreased fiber quality.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Rust (Wheat).jpeg" alt="Rust" class="disease-image">
+            <div class="disease-description">
+                <h3>Rust (Wheat)</h3>
+                <p>Caused by <i>Puccinia</i> species, rust diseases (such as stem rust, leaf rust) create pustules on wheat leaves, stems, and heads, reducing grain yield and quality.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Mosaic Disease (Various Crops).jpg" alt="Mosaic Disease" class="disease-image">
+            <div class="disease-description">
+                <h3>Mosaic Disease (Various Crops)</h3>
+                <p>Caused by different viruses (e.g., Cucumber Mosaic Virus), mosaic disease results in mottled or patterned leaves, stunted growth, and reduced crop yields.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="disease">
+            <img src="Downy Mildew (Various Crops).png" alt="Downy Mildew" class="disease-image">
+            <div class="disease-description">
+                <h3>Downy Mildew (Various Crops)</h3>
+                <p>Caused by fungi like <i>Peronospora</i> species, this disease results in yellowing and death of leaves and can lead to significant yield losses in crops like grapes and cucumbers.</p>
+                <a href="path/to/early-blight.pdf" download class="btn">Download PDF</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ 
+<section id="managementTipsSection" class="content-section">
+    <h2>Management Tips for Preventing Disease</h2>
+    <label for="diseaseSelect">Select Disease:</label>
+    <select id="diseaseSelect" onchange="displayManagementTips()">
+        <option value="">--Select a Disease--</option>
+        <option value="Blast (Rice)">Blast (Rice)</option>
+        <option value="Early Blight (Tomato)">Early Blight (Tomato)</option>
+        <option value="Powdery Mildew (Various Crops)">Powdery Mildew (Various Crops)</option>
+        <option value="Bacterial Blight (Rice)">Bacterial Blight (Rice)</option>
+        <option value="Leaf Spot (Cotton)">Leaf Spot (Cotton)</option>
+        <option value="Rust (Wheat)">Rust (Wheat)</option>
+        <option value="Mosaic Disease (Various Crops)">Mosaic Disease (Various Crops)</option>
+        <option value="Downy Mildew (Various Crops)">Downy Mildew (Various Crops)</option>
+    </select>
+
+    <div id="tipsContainer" style="display:none;">
+        <h3 id="selectedDiseaseTitle"></h3>
+        <ul id="managementTipsList"></ul>
+        <h4>Recommended Products:</h4>
+        <ul id="recommendedProductsList"></ul>
+    </div>
+</section>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Prediction & Management System</title>
+    <link rel="stylesheet" href="crop.css">
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+     <!-- Mapillary CSS -->
+     <link rel="stylesheet" href="https://unpkg.com/mapillary-js/dist/mapillary.min.css" />
+</head>
+
+<body>
+    <!-- Content Sections... -->
+
+    <!-- India Crop Disease Map Section -->
+    <section id="diseaseMapSection" class="content-section">
+        <h2>India Crop Disease Affected Areas</h2>
+        <div id="map" style="height: 500px;"></div>
+    </section>
+
+    <!-- Footer... -->
+
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+     <!-- Mapillary JS SDK -->
+     <script src="https://unpkg.com/mapillary-js/dist/mapillary.min.js"></script>
+
+    
+
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Coordinates for India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Example of affected areas (these coordinates are placeholders)
+        var affectedAreas = [
+            { "name": "Punjab", "lat": 31.1471, "lng": 75.3412 },
+            { "name": "Maharashtra", "lat": 19.7515, "lng": 75.7139 },
+            { "name": "Tamil Nadu", "lat": 11.1271, "lng": 78.6569 }
+        ];
+
+        // Add markers for affected areas
+        affectedAreas.forEach(area => {
+            L.marker([area.lat, area.lng]).addTo(map)
+                .bindPopup(`<b>${area.name}</b><br>Affected by crop diseases.`);
+        
+ // Mapillary Viewer instance
+ var mly;
+
+function openStreetView(lat, lng) {
+    // Hide the map and show the Mapillary viewer
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('mlyContainer').style.display = 'block';
+
+    // Initialize Mapillary viewer if not already initialized
+    if (!mly) {
+        mly = new Mapillary.Viewer({
+            container: 'mly',
+            accessToken: 'MLY|8246593905430051|1e8762b29b99013cf04088dea377700e', // Replace with your actual access token
+        });
+    }
+
+    // Move the viewer to the closest image to the clicked location
+    mly.moveCloseTo(lat, lng)
+        .catch(error => {
+            alert('No street view imagery available at this location.');
+            console.error(error);
+        });
+}
+
+function closeStreetView() {
+    document.getElementById('mlyContainer').style.display = 'none';
+    document.getElementById('map').style.display = 'block';
+}
+
+
+
+            });
+    </script>
+
+</body>
+
+</html>
+
+
+    
+
+    </main>
+
+    <section id="contact" class="content-section premium-contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have questions or need support? Reach out to us using the form below.</p>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" class="form-input"></textarea>
+                </div>
+                <input type="submit" value="Submit" class="btn">
+            </form>
+        </div>
+    </section>
+
+   <!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeLoginModal()">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="profilePic">Profile Picture:</label>
+                <input type="file" id="profilePic" class="form-input" accept="image/*">
+            </div>
+            <button type="button" class="btn" onclick="login()">Login</button>
+        </form>
+        <div id="profileDisplay" class="profile-display" style="display:none;">
+            <h3>Welcome, <span id="displayName"></span>!</h3>
+            <img id="displayPic" src="" alt="Profile Picture" class="profile-pic">
+        </div>
+    </div>
+</div>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Crop Disease Prediction & Management System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function predictDisease() {
+            const fileInput = document.getElementById('imageUpload');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please upload an image.');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Prediction: ' + data.prediction;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred: ' + error.message;
+            });
+        }
+        
+    </script>
+
+    <script src="crop.js"></script>
+    <script src="cropwheather.js"></script>
+    <script src="cropdatabase.js"></script>
+    <script src="language.js"></script>
+    <script src="chat.js"></script>
+</body>
+
+</html>
